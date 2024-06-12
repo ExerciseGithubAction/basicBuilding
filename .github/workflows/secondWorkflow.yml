@@ -1,0 +1,23 @@
+name: Issue Details Output
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  output-event-details:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Output issue event details
+        run: |
+          echo "Issue event details:"
+          echo "Action: ${{ github.event.action }}"
+          echo "Issue number: ${{ github.event.issue.number }}"
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue body: ${{ github.event.issue.body }}"
+          echo "Issue state: ${{ github.event.issue.state }}"
+          echo "Issue URL: ${{ github.event.issue.html_url }}"
